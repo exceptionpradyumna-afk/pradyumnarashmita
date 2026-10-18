@@ -3,8 +3,22 @@ let poppedCount = 0;
 const popSound = document.getElementById("popSound");
 const cheerSound = document.getElementById("cheerSound");
 
+// ऑडियो को ब्राउज़र में एक्टिव करने के लिए (Unlock Audio)
+function unlockAudio() {
+    popSound.play().then(() => {
+        popSound.pause();
+        popSound.currentTime = 0;
+    }).catch(e => console.log("Audio unlocked"));
+    
+    cheerSound.play().then(() => {
+        cheerSound.pause();
+        cheerSound.currentTime = 0;
+    }).catch(e => console.log("Cheer unlocked"));
+}
+
 // 1. Light Turn On karein jab bulb ko touch karein
 function turnOnLight() {
+    unlockAudio(); // यहाँ ऑडियो अनलॉक हो जाएगा
     document.body.classList.add("light-on");
     document.getElementById("step-0").classList.add("hidden");
     document.getElementById("step-1").classList.remove("hidden");
@@ -46,7 +60,7 @@ function createBalloon() {
 
     balloon.onclick = function() {
         popSound.currentTime = 0;
-        popSound.play(); // Real Pop Sound 'Thho'
+        popSound.play().catch(e => console.log("Pop sound error:", e));
 
         poppedCount++;
         showWishOrCandy();
@@ -83,11 +97,11 @@ function goToCakeStep() {
     document.getElementById("step-3").classList.remove("hidden");
 }
 
-// 6. Candle Bujhana & Kids Cheering Audio Play Karna
+// 6. Candle Bujhana & Cheering Audio Play Karna
 function blowCandle() {
     document.getElementById("flame").classList.add("hidden");
     cheerSound.currentTime = 0;
-    cheerSound.play(); // Kids Birthday Party Wish Sound
+    cheerSound.play().catch(e => console.log("Cheer sound error:", e));
     document.getElementById("cheer-msg").classList.remove("hidden");
 }
 
