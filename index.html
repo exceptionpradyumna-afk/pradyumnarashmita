@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mama ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sound Effects: Balloon Pop & Kids Birthday Party Cheering -->
+    <audio id="popSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    <audio id="cheerSound" src="https://assets.mixkit.co/active_storage/sfx/548/548-preview.mp3"></audio>
+
+    <!-- Step 0: Dark Screen & Light Bulb -->
+    <div id="step-0" class="dark-screen">
+        <div class="wire"></div>
+        <div class="bulb" onclick="turnOnLight()">
+            <div class="glow"></div>
+        </div>
+        <p class="light-text">💡 Light on karne ke liye bulb ko touch karo!</p>
+    </div>
+
+    <!-- Step 1: Name and Date of Birth (Password Lock: 19 October) -->
+    <div id="step-1" class="card hidden">
+        <h2>🎉 Ek Special Surprise! 🎉</h2>
+        <p>Aage badhne ke liye apni details bhro:</p>
+        <input type="text" id="userName" value="Mama" placeholder="Aapka Name" readonly>
+        <label style="display:block; text-align:left; margin-top:10px; font-size:14px; color:#555;">Apni Date of Birth select karo (Password):</label>
+        <input type="date" id="userDob">
+        <button onclick="checkPassword()">Surprise Unlock Karo ✨</button>
+        <p id="error-msg" class="error hidden">❌ Galat Date! Sahi Date of Birth (19 October) select karo.</p>
+    </div>
+
+    <!-- Step 2: Balloon Popping Game -->
+    <div id="step-2" class="screen hidden">
+        <div class="instructions">🎈 Mama, udte huye balloons ko tap karke fodo! (5 fodo)</div>
+        <div id="balloon-container"></div>
+        <div id="wish-popup" class="popup hidden"></div>
+        <button id="next-to-cake" class="btn hidden" onclick="goToCakeStep()">Aao Cake Katte Hain! 🎂</button>
+    </div>
+
+    <!-- Step 3: Cake Cutting & Candle Blowing -->
+    <div id="step-3" class="screen hidden">
+        <h2>🎂 Chalo Birthday Celebrate Karte Hain! 🎂</h2>
+        <p>Candle par tap karke fook maro aur bujhao!</p>
+        <div class="cake-container" onclick="blowCandle()">
+            <div id="flame" class="flame"></div>
+            <div class="candle"></div>
+            <div class="cake">🎂</div>
+        </div>
+        <div id="cheer-msg" class="hidden">
+            <h1>🎉 HAPPY BIRTHDAY MAMA! 🎉</h1>
+            <p>God aapko duniya ki saari khushiyan de! ❤️</p>
+            <br>
+            <button class="btn" onclick="goToMemories()">Aao Beete Huye Pal Ki Kuch Yaadein Dekhein 📸</button>
+        </div>
+    </div>
+
+    <!-- Step 4: Emotional Memory Gallery -->
+    <div id="step-4" class="screen hidden">
+        <h2>📜 Beete Huye Time Ki Kuch Khoobsurat Yaadein 💖</h2>
+        <p class="subtitle">Waqt beet jaata hai, lekin pyaari yaadein hamesha dil ke paas rehti hain Mama...</p>
+        
+        <div class="gallery">
+            <!-- Photo 1 -->
+            <div class="memory-card">
+                <img src="photo1.jpg" alt="Memory 1" onerror="this.src='https://via.placeholder.com/300x200?text=Photo+1'">
+                <p>Wo pehli khoobsurat pyari smile! 😊</p>
+            </div>
+            <!-- Photo 2 -->
+            <div class="memory-card">
+                <img src="photo2.jpg" alt="Memory 2" onerror="this.src='https://via.placeholder.com/300x200?text=Photo+2'">
+                <p>Hamesha saath me muskurane ki khas wajah! ✨</p>
+            </div>
+            <!-- Photo 3 -->
+            <div class="memory-card">
+                <img src="photo3.jpg" alt="Memory 3" onerror="this.src='https://via.placeholder.com/300x200?text=Photo+3'">
+                <p>Dher saari purani aur anmol yaadein! 💖</p>
+            </div>
+        </div>
+        <br>
+        <h3>Happy Birthday Once Again Mama! 🎂🎈</h3>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
