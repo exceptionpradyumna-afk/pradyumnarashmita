@@ -3,22 +3,22 @@ let poppedCount = 0;
 const popSound = document.getElementById("popSound");
 const cheerSound = document.getElementById("cheerSound");
 
-// ऑडियो को ब्राउज़र में एक्टिव करने के लिए (Unlock Audio)
+// मोबाइल ब्राउज़र के लिए ऑडियो अनलॉक फंक्शन
 function unlockAudio() {
     popSound.play().then(() => {
         popSound.pause();
         popSound.currentTime = 0;
-    }).catch(e => console.log("Audio unlocked"));
+    }).catch(() => {});
     
     cheerSound.play().then(() => {
         cheerSound.pause();
         cheerSound.currentTime = 0;
-    }).catch(e => console.log("Cheer unlocked"));
+    }).catch(() => {});
 }
 
-// 1. Light Turn On karein jab bulb ko touch karein
+// 1. Bulb Touch Karne Par Light On & Sound Unlock
 function turnOnLight() {
-    unlockAudio(); // यहाँ ऑडियो अनलॉक हो जाएगा
+    unlockAudio(); // बल्ब टच करते ही ब्राउज़र ऑडियो अलाउ कर देगा
     document.body.classList.add("light-on");
     document.getElementById("step-0").classList.add("hidden");
     document.getElementById("step-1").classList.remove("hidden");
@@ -60,7 +60,7 @@ function createBalloon() {
 
     balloon.onclick = function() {
         popSound.currentTime = 0;
-        popSound.play().catch(e => console.log("Pop sound error:", e));
+        popSound.play(); // Pop sound bajega
 
         poppedCount++;
         showWishOrCandy();
@@ -75,7 +75,7 @@ function createBalloon() {
     setTimeout(() => { balloon.remove(); }, 4500);
 }
 
-// 4. Balloon Fodne Par Messages/Surprises
+// 4. Surprise Popup
 function showWishOrCandy() {
     const popup = document.getElementById("wish-popup");
     popup.classList.remove("hidden");
@@ -91,21 +91,21 @@ function showWishOrCandy() {
     popup.innerText = surprises[Math.floor(Math.random() * surprises.length)];
 }
 
-// 5. Cake Step Par Jaana
+// 5. Go to Cake Step
 function goToCakeStep() {
     document.getElementById("step-2").classList.add("hidden");
     document.getElementById("step-3").classList.remove("hidden");
 }
 
-// 6. Candle Bujhana & Cheering Audio Play Karna
+// 6. Blow Candle & Play Cheering Sound
 function blowCandle() {
     document.getElementById("flame").classList.add("hidden");
     cheerSound.currentTime = 0;
-    cheerSound.play().catch(e => console.log("Cheer sound error:", e));
+    cheerSound.play(); // Cheering wish sound bajega
     document.getElementById("cheer-msg").classList.remove("hidden");
 }
 
-// 7. Emotional Memory Gallery Dikhana
+// 7. Go to Memories Gallery
 function goToMemories() {
     document.getElementById("step-3").classList.add("hidden");
     document.getElementById("step-4").classList.remove("hidden");
